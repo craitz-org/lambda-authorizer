@@ -31,6 +31,7 @@ functions:
       - http:
           path: v1/token
           method: post
+          integration: lambda
           cors: true
           request:
             template:
