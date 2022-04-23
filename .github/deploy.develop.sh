@@ -6,7 +6,7 @@ set -e
 function_name="lambda-authorizer"
 
 # serverless deploy
-result=$(sls deploy)
+result=$(sls deploy --stage=dev)
 echo "${result}"
 
 # find newest published version
