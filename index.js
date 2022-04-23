@@ -15,10 +15,10 @@ function buildCustomError(httpStatus, cause) {
               cause
           });
       }
-      case 401: {
+      case 403: {
         return JSON.stringify({
             httpStatus,
-            type: 'Unauthorized',
+            type: 'Forbidden',
             cause
         });
       }
@@ -65,7 +65,7 @@ async function authorizeUser(clientId, poolId, username, password) {
         };
     } catch (err) {
         if (err.code === 'NotAuthorizedException') {
-            throw buildCustomError(401, `${err.code}: ${err.message}`);
+            throw buildCustomError(403, `${err.code}: ${err.message}`);
         }
 
         throw err;
