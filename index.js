@@ -48,7 +48,8 @@ async function authorizeUser(clientId, poolId, username, password) {
             UserPoolId: poolId,
             AuthParameters: {
                 USERNAME: username,
-                PASSWORD: password            }
+                PASSWORD: password            
+            }
         }).promise();
 
         if (!data) {
