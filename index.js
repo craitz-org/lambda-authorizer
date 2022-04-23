@@ -52,19 +52,6 @@ function buildCustomError(httpStatus, cause) {
   }
 }
 
-function getAuthParams(credentials) {
-    try {
-        const [username, password] = Buffer.from(credentials.split(' ')[1], 'base64').toString('ascii').split(':');
-
-        return {
-            username,
-            password
-        }
-    } catch (err) {
-        throw buildCustomError(400, 'Credencial inválida');
-    }
-}
-
 async function authorizeUser(clientId, poolId, username, password) {
     try {
         const data = await cognitoidentityserviceprovider.adminInitiateAuth({
@@ -97,6 +84,10 @@ async function authorizeUser(clientId, poolId, username, password) {
 
 exports.handler = async (event, context) => {
     try {
+        console.log({
+          event: JSON.stringify(event)
+        });
+
         return await authorizeUser(event.clientId, event.poolId, event.username, event.password);
     } catch (err) {
         return err;
