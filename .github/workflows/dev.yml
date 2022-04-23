@@ -22,6 +22,11 @@ jobs:
       - name: Serverless Install
         run: |
           npm install -g serverless
+      - name: npm install
+        env:
+          CI: true
+        run: |
+          npm ci
       - name: Deploy Lambda
         run: |
           chmod +x "${GITHUB_WORKSPACE}/.github/deploy.develop.sh"
