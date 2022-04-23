@@ -24,5 +24,5 @@ jobs:
           npm install -g serverless
       - name: Deploy Lambda
         run: |
-          chmod +x "${GITHUB_WORKSPACE}/.github/deploy.mais.sh"
+          chmod +x "${GITHUB_WORKSPACE}/.github/deploy.main.sh"
           "${GITHUB_WORKSPACE}/.github/deploy.main.sh"
