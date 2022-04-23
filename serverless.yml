@@ -26,8 +26,9 @@ functions:
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1        
     package:
           exclude:
+            - .serverless/**
             - node_modules/**
-            - test/**%      
+            - test/**
     events:
       - http:
           path: v1/token
@@ -36,4 +37,7 @@ functions:
           integration: lambda
           request:
             template:
-              application/x-www-form-urlencoded: '{ "body-json" : $input.json("$") }'
+              application/x-www-form-urlencoded: >
+                { 
+                  "body-json": $input.json("$") 
+                }
