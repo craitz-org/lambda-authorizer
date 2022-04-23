@@ -26,10 +26,12 @@ functions:
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1        
     package:
           exclude:
-            - node_modules/**
             - test/**%      
     events:
       - http:
           path: v1/token
           method: post
           cors: true
+          request:
+            template:
+              application/x-www-form-urlencoded: '{ "body-json" : $input.json("$") }'
