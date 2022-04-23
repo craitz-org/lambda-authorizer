@@ -28,7 +28,7 @@ functions:
           exclude:
             - test/**%      
     events:
-      - http:
+      - httpApi:
           path: v1/token
           method: post
           cors: true
