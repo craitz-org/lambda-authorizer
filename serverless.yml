@@ -1,0 +1,29 @@
+frameworkVersion: '2 || 3'
+
+custom:
+  lambda_name: lambda-authorizer
+
+service: ${self:custom.lambda_name}
+
+provider:
+  name: aws
+  lambdaHashingVersion: 20201221
+  stackName: ${self:custom.lambda_name}
+  runtime: nodejs14.x
+  role: arn:aws:iam::248567781489:role/lambda-role
+  deploymentBucket:
+    name: craitzus-gh-actions
+
+functions:
+  func:
+    handler: index.handler
+    name: ${self:custom.lambda_name}
+    memorySize: 256
+    timeout: 30
+    description: Authorization microservice
+    environment:
+      AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1        
+    package:
+          exclude:
+            - node_modules/**
+            - test/**%      
