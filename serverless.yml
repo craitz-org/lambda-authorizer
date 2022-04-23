@@ -27,3 +27,7 @@ functions:
           exclude:
             - node_modules/**
             - test/**%      
+    events:
+      - http:
+          path: v1/token
+          method: post
