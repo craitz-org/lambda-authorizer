@@ -1,0 +1,39 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: The AWS CloudFormation template for this Serverless application
+Resources:
+  FuncLogGroup:
+    Type: 'AWS::Logs::LogGroup'
+    Properties:
+      LogGroupName: /aws/lambda/lambda-authorizer
+  FuncLambdaFunction:
+    Type: 'AWS::Lambda::Function'
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs14.x
+      FunctionName: lambda-authorizer
+      MemorySize: 256
+      Timeout: 30
+      Description: Authorization microservice
+      Environment:
+        Variables:
+          AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1'
+      Role: 'arn:aws:iam::248567781489:role/lambda-role'
+    DependsOn:
+      - FuncLogGroup
+  FuncLambdaVersionv6NeNfCUCC5cEL8m24lJ40M7cZEs7wyPn2e7GC2XQ:
+    Type: 'AWS::Lambda::Version'
+    DeletionPolicy: Retain
+    Properties:
+      FunctionName: !Ref FuncLambdaFunction
+      CodeSha256: jpSF//r5L8sOiWU6b4ihBobQy6iIdXXyQsxnyDcKR4I=
+      Description: Authorization microservice
+Outputs:
+  ServerlessDeploymentBucketName:
+    Value: craitzus-gh-actions
+    Export:
+      Name: sls-lambda-authorizer-dev-ServerlessDeploymentBucketName
+  FuncLambdaFunctionQualifiedArn:
+    Description: Current Lambda function version
+    Value: !Ref FuncLambdaVersionv6NeNfCUCC5cEL8m24lJ40M7cZEs7wyPn2e7GC2XQ
+    Export:
+      Name: sls-lambda-authorizer-dev-FuncLambdaFunctionQualifiedArn
