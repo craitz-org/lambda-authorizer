@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "query-string-parser": "^0.2.3"
+  }
+}

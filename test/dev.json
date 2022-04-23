@@ -1,6 +1,3 @@
 {
-	"clientId": "4icqdo0ia8ifbvmfpv0ptgt9s1",
-	"poolId": "us-east-1_YYTAAxPEa",
-	"username": "veliti",
-	"password": "velitipass"
+	"body-json": "clientId=4icqdo0ia8ifbvmfpv0ptgt9s1&poolId=us-east-1_YYTAAxPEa&username=veliti&password=velitipass"
 }
