@@ -41,7 +41,7 @@ function buildCustomError(httpStatus, cause) {
 
 async function authorizeUser(clientId, poolId, username, password) {
     try {
-      // perform authorization on Cognito
+      // perform authorization on Cognito user pool
         const data = await cognitoidentityserviceprovider.adminInitiateAuth({
             AuthFlow: 'ADMIN_NO_SRP_AUTH',
             ClientId: clientId,
