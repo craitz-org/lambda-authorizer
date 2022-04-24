@@ -61,7 +61,7 @@ async function authorizeUser(clientId, poolId, username, password) {
             access_token: data.AuthenticationResult.IdToken,
             token_type: 'Bearer',
             expires_in: 3600,
-            scope: 'Read'
+            scope: 'Production'
         };
     } catch (err) {
         if (err.code === 'NotAuthorizedException') {
