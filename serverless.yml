@@ -31,7 +31,6 @@ functions:
       individually: true
       exclude:
         - .serverless/**
-        - node_modules/**
         - test/**
     events:
       - http:
