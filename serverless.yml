@@ -34,6 +34,8 @@ functions:
         - '!test/**'
         - '!*.http'
         - '!template.yml'
+        - '!config.*.json'
+        - '!package*.json'
     events:
       - http:
           path: v1/token
