@@ -1,9 +1,10 @@
 #!/bin/bash
 
-set -ex
+set -e
+set -x
 
 # lambda name
-alias_name="dev"
+alias_name=$1
 function_name="lambda-authorizer-${alias_name}"
 
 # serverless deploy

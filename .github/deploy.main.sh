@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -e
+set -x
+
 # lambda name
 alias_name="prd"
 function_name="lambda-authorizer-${alias_name}"
