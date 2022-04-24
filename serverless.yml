@@ -1,7 +1,7 @@
 frameworkVersion: '2 || 3'
 
 custom:
-  lambda_name: lambda-authorizer
+  lambda_name: lambda-authorizer-${opt:stage, 'dev'}
 
 service: ${self:custom.lambda_name}
 
@@ -13,7 +13,7 @@ provider:
   runtime: nodejs14.x
   role: arn:aws:iam::248567781489:role/lambda-authorizer-role
   deploymentBucket:
-    name: craitzus-gh-actions
+    name: craitzus-veliti
   apiGateway:
     # restApiId: ${file(./config.${opt:stage, 'dev'}.json):restApiId}
     # restApiRootResourceId: ${file(./config.${opt:stage, 'dev'}.json):restApiRootResourceId}

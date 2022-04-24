@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # lambda name
-function_name="lambda-authorizer"
+function_name="lambda-authorizer-dev"
 alias_name="dev"
 
 # serverless deploy
-result=$(sls deploy --stage dev)
+result=$(sls deploy --stage ${alias_name})
 echo "${result}"
 
 # find newest published version
