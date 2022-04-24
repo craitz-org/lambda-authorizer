@@ -14,6 +14,9 @@ provider:
   role: arn:aws:iam::248567781489:role/lambda-authorizer-role
   deploymentBucket:
     name: craitzus-gh-actions
+  apiGateway:
+    restApiId: ubyh63c352
+    restApiRootResourceId: 8sgb7a887g
 
 functions:
   func:
@@ -45,6 +48,16 @@ functions:
             statusCodes:
               200:
                 pattern: ''
+              400:
+                pattern: '.*"httpStatus":400.*'
+                template: >
+                  #set($errorMessageObj = $util.parseJson($input.path('$.errorMessage')))
+
+                  {
+                      "statusCode": $errorMessageObj.httpStatus,
+                      "type": "$errorMessageObj.type",
+                      "cause": "$errorMessageObj.cause"
+                  }
               401:
                 pattern: '.*"httpStatus":401.*'
                 template: >
@@ -55,3 +68,13 @@ functions:
                       "type": "$errorMessageObj.type",
                       "cause": "$errorMessageObj.cause"
                   }
+              500:
+                pattern: '.*"httpStatus":500.*'
+                template: >
+                  #set($errorMessageObj = $util.parseJson($input.path('$.errorMessage')))
+
+                  {
+                      "statusCode": $errorMessageObj.httpStatus,
+                      "type": "$errorMessageObj.type",
+                      "cause": "$errorMessageObj.cause"
+                  }                  
