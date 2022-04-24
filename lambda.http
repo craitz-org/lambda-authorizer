@@ -1,8 +1,8 @@
-POST https://ux7jpfn07f.execute-api.us-east-1.amazonaws.com/dev/v1/token
+POST https://p5zs2dyoue.execute-api.us-east-1.amazonaws.com/dev/v1/token
+Content-Type: application/x-www-form-urlencoded
 
-{
-	"clientId": "4icqdo0ia8ifbvmfpv0ptgt9s1",
-	"poolId": "us-east-1_YYTAAxPEa",
-	"username": "veliti",
-	"password": "velitipass"
-}
+clientId=4icqdo0ia8ifbvmfpv0ptgt9s1
+&poolId=us-east-1_YYTAAxPEa
+&username=veliti
+&password=velitipass
+

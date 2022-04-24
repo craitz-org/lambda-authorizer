@@ -41,3 +41,17 @@ functions:
                 { 
                   "body-json": $input.json("$") 
                 }
+          response:
+            statusCodes:
+              200:
+                pattern: ''
+              401:
+                pattern: '.*"httpStatus":401.*'
+                template: >
+                  #set($errorMessageObj = $util.parseJson($input.path('$.errorMessage')))
+
+                  {
+                      "httpStatus": $errorMessageObj.httpStatus,
+                      "errorType": "$errorMessageObj.type",
+                      "cause": "$errorMessageObj.cause"
+                  }
