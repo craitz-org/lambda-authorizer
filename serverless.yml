@@ -15,8 +15,8 @@ provider:
   deploymentBucket:
     name: craitzus-gh-actions
   apiGateway:
-    restApiId: ubyh63c352
-    restApiRootResourceId: 8sgb7a887g
+    restApiId: ${file(./config.${opt:stage, 'dev'}.json):restApiId}
+    restApiRootResourceId: ${file(./config.${opt:stage, 'dev'}.json):restApiRootResourceId}
 
 functions:
   func:
