@@ -31,4 +31,4 @@ jobs:
         run: |
           chmod +x "${GITHUB_WORKSPACE}/.github/deploy.sh"
           envname='dev'
-          "${GITHUB_WORKSPACE}/.github/deploy.sh"
+          "${GITHUB_WORKSPACE}/.github/deploy.sh ${param1}"
