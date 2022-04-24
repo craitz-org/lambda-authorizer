@@ -29,5 +29,5 @@ jobs:
           npm ci
       - name: Deploy Lambda
         run: |
-          chmod +x .github/deploy.sh"
+          chmod +x .github/deploy.sh
           .github/deploy.sh "prd"
