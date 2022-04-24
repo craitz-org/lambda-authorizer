@@ -77,7 +77,7 @@ exports.handler = async (event, context) => {
         // parse x-www-form-urlencoded
         event = parser.fromQuery(event['body-json'])
 
-        // authorization
+        // authorize credentials
         return await authorizeUser(event.clientId, event.poolId, event.username, event.password);
     } catch (err) {
         throw err;

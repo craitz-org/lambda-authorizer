@@ -15,10 +15,8 @@ provider:
   deploymentBucket:
     name: craitzus-veliti
   apiGateway:
-    # restApiId: ${file(./config.${opt:stage, 'dev'}.json):restApiId}
-    # restApiRootResourceId: ${file(./config.${opt:stage, 'dev'}.json):restApiRootResourceId}
-    restApiId: ubyh63c352
-    restApiRootResourceId: 8sgb7a887g
+    restApiId: ${file(./config.${opt:stage, 'dev'}.json):restApiId}
+    restApiRootResourceId: ${file(./config.${opt:stage, 'dev'}.json):restApiRootResourceId}
 
 functions:
   func:
