@@ -68,7 +68,7 @@ async function authorizeUser(clientId, poolId, username, password) {
             throw buildCustomError(401, `${err.code}: ${err.message}`);
         }
 
-        throw err;
+        throw buildCustomError(500, err.message);
     }
 }
 
@@ -80,6 +80,6 @@ exports.handler = async (event, context) => {
         // authorization
         return await authorizeUser(event.clientId, event.poolId, event.username, event.password);
     } catch (err) {
-        return err;
+        throw err;
     }
 };
