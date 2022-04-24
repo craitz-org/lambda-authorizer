@@ -5,7 +5,7 @@ function_name="lambda-authorizer"
 alias_name="prod"
 
 # serverless deploy
-result=$(sls deploy --stage=prod)
+result=$(sls deploy --stage prod)
 echo "${result}"
 
 # find newest published version
