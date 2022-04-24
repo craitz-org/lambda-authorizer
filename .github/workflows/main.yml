@@ -3,7 +3,10 @@ name: Deploy Production
 on:
   push:
     branches:
-    - main
+      - main
+  paths-ignore:
+    - test/**
+    - lambda.http
 
 jobs:
   deploy_lambda:

@@ -29,5 +29,5 @@ jobs:
           npm ci
       - name: Deploy Lambda
         run: |
-          chmod +x "${GITHUB_WORKSPACE}/.github/deploy.develop.sh"
-          "${GITHUB_WORKSPACE}/.github/deploy.develop.sh"
+          chmod +x .github/deploy.sh
+          .github/deploy.sh "dev"
