@@ -4,9 +4,9 @@ on:
   push:
     branches:
       - main
-  paths-ignore:
-    - test/**
-    - lambda.http
+    paths-ignore:
+      - test/**
+      - lambda.http
 
 jobs:
   deploy_lambda:
