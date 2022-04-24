@@ -51,7 +51,7 @@ functions:
                   #set($errorMessageObj = $util.parseJson($input.path('$.errorMessage')))
 
                   {
-                      "httpStatus": $errorMessageObj.httpStatus,
-                      "errorType": "$errorMessageObj.type",
+                      "statusCode": $errorMessageObj.httpStatus,
+                      "type": "$errorMessageObj.type",
                       "cause": "$errorMessageObj.cause"
                   }
