@@ -82,10 +82,10 @@ exports.handler = async (event, context) => {
       globals.stage = process.env.STAGE;
 
       // parse x-www-form-urlencoded
-      event = parser.fromQuery(event['body-json'])
+      const { username, password } = parser.fromQuery(event['body-json'])
 
       // authorize credentials
-      return await authorizeUser(event.clientId, event.poolId, event.username, event.password);
+      return await authorizeUser(process.env.CLIENTID, process.env.POOLID, username, password);
     } catch (err) {
       throw err;
     }
