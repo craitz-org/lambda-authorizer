@@ -74,6 +74,8 @@ async function authorizeUser(clientId, poolId, username, password) {
 
 exports.handler = async (event, context) => {
     try {
+      console.log(envname. process.env.ENVNAME);
+
         // parse x-www-form-urlencoded
         event = parser.fromQuery(event['body-json'])
 

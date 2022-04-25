@@ -17,6 +17,8 @@ provider:
   apiGateway:
     restApiId: ${file(./config.${opt:stage, 'dev'}.json):restApiId}
     restApiRootResourceId: ${file(./config.${opt:stage, 'dev'}.json):restApiRootResourceId}
+  environment:
+    ENVNAME: ${opt:stage, 'dev'}
 
 functions:
   func:
