@@ -62,6 +62,7 @@ async function authorizeUser(clientId, poolId, username, password) {
         // return access token
         return {
             access_token: data.AuthenticationResult.IdToken,
+            refresh_token: data.AuthenticationResult.RefreshToken,
             token_type: 'Bearer',
             expires_in: 3600,
             scope: globals.stage
