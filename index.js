@@ -6,6 +6,7 @@ const parser = require('query-string-parser')
 const cognitoProviderLib = require('aws-sdk/clients/cognitoidentityserviceprovider');
 const cognitoidentityserviceprovider = new cognitoProviderLib();
 
+// global vars
 const globals = {};
 
 function buildCustomError(httpStatus, cause) {
