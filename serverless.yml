@@ -18,7 +18,7 @@ provider:
     restApiId: ${file(./config.${opt:stage, 'dev'}.json):restApiId}
     restApiRootResourceId: ${file(./config.${opt:stage, 'dev'}.json):restApiRootResourceId}
   environment:
-    ENVNAME: ${opt:stage, 'dev'}
+    STAGE: ${opt:stage, 'dev'}
 
 functions:
   func:

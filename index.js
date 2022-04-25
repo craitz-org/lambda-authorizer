@@ -6,6 +6,8 @@ const parser = require('query-string-parser')
 const cognitoProviderLib = require('aws-sdk/clients/cognitoidentityserviceprovider');
 const cognitoidentityserviceprovider = new cognitoProviderLib();
 
+const globals = {};
+
 function buildCustomError(httpStatus, cause) {
   switch (httpStatus) {
       case 400: {
@@ -61,7 +63,7 @@ async function authorizeUser(clientId, poolId, username, password) {
             access_token: data.AuthenticationResult.IdToken,
             token_type: 'Bearer',
             expires_in: 3600,
-            scope: 'Production'
+            scope: globals.stage
         };
     } catch (err) {
         if (err.code === 'NotAuthorizedException') {
@@ -74,14 +76,15 @@ async function authorizeUser(clientId, poolId, username, password) {
 
 exports.handler = async (event, context) => {
     try {
-      console.log('envname', process.env.ENVNAME);
+      // get stage from serverless deploy
+      globals.stage = process.env.STAGE;
 
-        // parse x-www-form-urlencoded
-        event = parser.fromQuery(event['body-json'])
+      // parse x-www-form-urlencoded
+      event = parser.fromQuery(event['body-json'])
 
-        // authorize credentials
-        return await authorizeUser(event.clientId, event.poolId, event.username, event.password);
+      // authorize credentials
+      return await authorizeUser(event.clientId, event.poolId, event.username, event.password);
     } catch (err) {
-        throw err;
+      throw err;
     }
 };
