@@ -1,9 +1,15 @@
-name: Deploy Production
+name: Deploy Development
 
 on:
   push:
     branches:
       - main
+
+env:
+  STAGE_NAME: prd
+  AWS_REGION: us-east-1
+  POOL_ID: ${{ secrets.GHACTIONS_POOLID }}
+  CLIENT_ID: ${{ secrets.GHACTIONS_CLIENTID }}
 
 jobs:
   deploy_lambda:
@@ -18,9 +24,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          pool-id: ${{ secrets.GHACTIONS_POOLID_PRD }}
-          client-id: ${{ secrets.GHACTIONS_CLIENTID_PRD }}
-          aws-region: us-east-1
+          aws-region: ${{ env.AWS_REGION }}
       - name: Serverless Install
         run: |
           npm install -g serverless
@@ -29,7 +33,11 @@ jobs:
           CI: true
         run: |
           npm ci
+      - name: Create config file
+        run: |
+          touch config.${{ env.STAGE_NAME }}.json
+          echo '{"poolid":"${{ env.POOL_ID }}","clientid":"${{ env.CLIENT_ID }}"}' > config.${{ env.STAGE_NAME }}.json
       - name: Deploy Lambda
         run: |
           chmod +x .github/deploy.sh
-          .github/deploy.sh "prd"
+          .github/deploy.sh "${{ env.STAGE_NAME }}"
