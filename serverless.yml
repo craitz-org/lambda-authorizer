@@ -17,8 +17,6 @@ provider:
     name: craitzus-veliti
   environment:
     STAGE: ${opt:stage, 'dev'}
-    POOLID: ${file(./config.${opt:stage, 'dev'}.json):poolid}
-    CLIENTID: ${file(./config.${opt:stage, 'dev'}.json):clientid}
 functions:
   func:
     handler: index.handler

@@ -1,6 +1,6 @@
 ### dev
 
-POST https://ubyh63c352.execute-api.us-east-1.amazonaws.com/dev/v1/token
+POST  https://7p75r33vme.execute-api.us-east-1.amazonaws.com/dev/token
 Content-Type: application/x-www-form-urlencoded
 
 clientId=4icqdo0ia8ifbvmfpv0ptgt9s1

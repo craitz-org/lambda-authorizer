@@ -8,8 +8,6 @@ on:
 env:
   STAGE_NAME: prd
   AWS_REGION: us-east-1
-  POOL_ID: ${{ secrets.GHACTIONS_POOLID }}
-  CLIENT_ID: ${{ secrets.GHACTIONS_CLIENTID }}
 
 jobs:
   deploy_lambda:
@@ -33,10 +31,10 @@ jobs:
           CI: true
         run: |
           npm ci
-      - name: Create config file
-        run: |
-          touch config.${{ env.STAGE_NAME }}.json
-          echo '{"poolid":"${{ env.POOL_ID }}","clientid":"${{ env.CLIENT_ID }}"}' > config.${{ env.STAGE_NAME }}.json
+      # - name: Create config file
+      #   run: |
+      #     touch config.${{ env.STAGE_NAME }}.json
+      #     echo '{"poolid":"${{ env.POOL_ID }}","clientid":"${{ env.CLIENT_ID }}"}' > config.${{ env.STAGE_NAME }}.json
       - name: Deploy Lambda
         run: |
           chmod +x .github/deploy.sh
