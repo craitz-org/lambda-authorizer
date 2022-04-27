@@ -10,10 +10,10 @@ clientId=42ir5sgjevt2ekdvr1g4st9me3
 
 ### prod
 
-POST https://ucrw9xjluh.execute-api.us-east-1.amazonaws.com/prd/v1/token
+POST https://cnnws06f96.execute-api.us-east-1.amazonaws.com/prd/token
 Content-Type: application/x-www-form-urlencoded
 
-clientId=4icqdo0ia8ifbvmfpv0ptgt9s1
-&poolId=us-east-1_YYTAAxPEa
+clientId=42ir5sgjevt2ekdvr1g4st9me3
+&poolId=us-east-1_5jQpJgMno
 &username=veliti
 &password=velitipass
